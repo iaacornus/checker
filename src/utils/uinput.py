@@ -1,17 +1,17 @@
 from collections.abc import Callable
-from typing import Any
+from typing import Any, Self
 
 from src.utils.logger import Logger
 
 
 class ParseInput:
     def __init__(
-            self, log: Logger, input_func: Callable
+            self: Self,
         ) -> None:
         self.log = log
         self.input_func: Callable = input_func
 
-    def call_func(self) -> dict[str, Any]:
+    def call_func(self: Self) -> Output:
         # calling function
         try:
             function_out: Any = self.input_func()
