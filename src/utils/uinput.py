@@ -16,7 +16,7 @@ class ParseInput:
         try:
             function_out: Any = self.input_func()
         except (AttributeError, ImportError) as err:
-            self.log.CRIT(err)
+            self.log.CRIT(f"{err}")
             raise SystemExit(
                     f"{err} was raised."
                 ) from err
