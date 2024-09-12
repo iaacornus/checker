@@ -19,9 +19,12 @@ class ParseInput:
         self.act_num: int = act_num
 
     def call_func(self: Self) -> Output:
-        # calling function
         try:
-            function_out: Any = self.input_func()
+            func_out: Output = {}
+
+            for i in range(3): # calling function 3 times
+                output_: Any = self.input_func
+                func_out[f"return-{i}"] = output_
         except (AttributeError, ImportError) as err:
             self.log.CRIT(f"{err}")
             raise SystemExit(
@@ -30,7 +33,7 @@ class ParseInput:
 
         return {
                 "func_name": self.input_func.__name__,
-                "out": function_out
+                "out": func_out
             }
 
     def store_output(self: Self) -> bool:
