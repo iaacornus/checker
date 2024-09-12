@@ -31,4 +31,25 @@ class ParseInput:
                 "out": function_out
             }
 
+    def store_output(self: Self) -> bool:
+        function_out: Output = self.call_func()
+        fname: str = f"output-act-{self.act_num}"
+
+        try:
+            with open(
+                    "w", fname, encoding="utf-8"
+                ) as file_out:
+                file_out.write(function_out)
+        except (
+                IOError,
+                SystemError,
+                PermissionError
+            ) as err:
+            self.log.CRIT(
+                f"{err}: Cannot write into file ..."
+            )
+            return False
+
+        return True
+
 
