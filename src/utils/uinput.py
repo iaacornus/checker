@@ -12,8 +12,18 @@ class ParseInput:
         self.input_func: Callable = input_func
 
     def call_func(self) -> dict[str, Any]:
+        # calling function
+        try:
+            function_out: Any = self.input_func()
+        except (AttributeError, ImportError) as err:
+            self.log.CRIT(err)
+            raise SystemExit(
+                    f"{err} was raised."
+                ) from err
+
         return {
-            "any": Any
+            "func_name": self.input_func.__name__,
+            "out": function_out
         }
 
 
