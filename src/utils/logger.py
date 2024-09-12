@@ -1,0 +1,61 @@
+import logging
+from pathlib import Path
+from os import mkdir
+from os.path import exists
+
+from rich.logging import RichHandler
+
+
+class Logger:
+    """ Custom logger """
+
+    def __init__(self) -> None:
+        logging.basicConfig(
+            format="%(message)s",
+            level=logging.INFO,
+            datefmt="[%X]",
+            handlers=[
+                    RichHandler(
+                        show_time=False,
+                        show_path=False
+                    )
+                ]
+        )
+
+        self.log: logging.Logger = logging.getLogger("rich")
+
+        BASE_PATH: str = f"{Path.home()}/.checker"
+        if not exists(BASE_PATH):
+            try:
+                mkdir(BASE_PATH)
+            except (PermissionError, OSError) as err:
+                self.critical(
+                    f"Cannot create directory: {err} ..."
+                )
+
+        file_log = logging.FileHandler(
+                filename=f"{BASE_PATH}/checker.log"
+            )
+
+        file_log.setLevel(logging.INFO)
+        file_log.setFormatter(
+            logging.Formatter(
+                "%(levelname)s %(message)s"
+            )
+        )
+        self.log.addHandler(file_log)
+
+    def CRIT(self, message: str) -> None:
+        self.log.critical(
+            "CRIT: %s" % (message)
+        )
+
+    def ERR(self, message: str) -> None:
+        self.log.error(
+            "ERR: %s" % (message)
+        )
+
+    def INFO(self, message: str) -> None:
+        self.log.info(
+            "INFO: %s" % (message)
+        )
