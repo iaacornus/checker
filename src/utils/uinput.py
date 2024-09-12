@@ -1,6 +1,7 @@
 from collections.abc import Callable
 from typing import Any, Self
 
+from src.misc.types import Output
 from src.utils.logger import Logger
 
 
