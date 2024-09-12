@@ -14,6 +14,7 @@ class ParseInput:
         ) -> None:
         self.log = log
         self.input_func: Callable = input_func
+        self.act_num: int = act_num
 
     def call_func(self: Self) -> Output:
         # calling function
