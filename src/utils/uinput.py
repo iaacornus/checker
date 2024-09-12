@@ -8,6 +8,9 @@ from src.utils.logger import Logger
 class ParseInput:
     def __init__(
             self: Self,
+            log: Logger,
+            input_func: Callable,
+            act_num: int
         ) -> None:
         self.log = log
         self.input_func: Callable = input_func
