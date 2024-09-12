@@ -22,8 +22,8 @@ class ParseInput:
                 ) from err
 
         return {
-            "func_name": self.input_func.__name__,
-            "out": function_out
-        }
+                "func_name": self.input_func.__name__,
+                "out": function_out
+            }
 
 
