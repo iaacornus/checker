@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from collections.abc import Callable
 from typing import Any, Self
 
@@ -39,6 +41,13 @@ class ParseInput:
             with open(
                     "w", fname, encoding="utf-8"
                 ) as file_out:
+                function_out["date"] = (
+                        datetime
+                            .now()
+                            .strftime(
+                                "%d/%m/%Y %H:%M:%S"
+                            )
+                    )
                 file_out.write(function_out)
         except (
                 IOError,
