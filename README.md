@@ -10,7 +10,7 @@ evaluates the quality of code based on certain set of rules applied.
 
 # LICENSE
 
-Copyright (C) 2024 James Aaron Erang <iaacornus.devel@gmail.com>
+Copyright (C) 2024 James Aaron Erang \<iaacornus.devel@gmail.com\>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
