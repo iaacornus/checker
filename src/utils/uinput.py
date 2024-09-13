@@ -60,7 +60,7 @@ class ParseInput:
                 PermissionError
             ) as err:
             self.log.CRIT(
-                f"{err}: Cannot write into file ..."
+                f"Cannot write into file: {err} ..."
             )
             return False
 
