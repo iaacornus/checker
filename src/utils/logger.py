@@ -45,17 +45,11 @@ class Logger:
         )
         self.log.addHandler(file_log)
 
-    def CRIT(self, message: str) -> None:
-        self.log.critical(
-            "CRIT: %s" % (message)
-        )
+    def CRIT(self, msg: str) -> None:
+        self.log.critical("CRIT: %s", msg)
 
-    def ERR(self, message: str) -> None:
-        self.log.error(
-            "ERR: %s" % (message)
-        )
+    def ERR(self, msg: str) -> None:
+        self.log.error("ERR: %s", msg)
 
-    def INFO(self, message: str) -> None:
-        self.log.info(
-            "INFO: %s" % (message)
-        )
+    def INFO(self, msg: str) -> None:
+        self.log.info("INFO: %s", msg)
