@@ -13,8 +13,10 @@ class ParseInput:
             input_func: Callable,
             act_num: int
         ) -> None:
-        self.log = log
+        self.log: Logger = log
+        # participant's input function for checking
         self.input_func: Callable = input_func
+        # activity number for reference in db
         self.act_num: int = act_num
 
     def call_func(self: Self) -> Output:
@@ -48,6 +50,9 @@ class ParseInput:
                                 "%d/%m/%Y %H:%M:%S"
                             )
                     )
+            # write the details of activity and output of
+            # function into a file for viewing and processing
+            # later on program so it is not stored in memory
                 file_out.write(function_out)
         except (
                 IOError,
