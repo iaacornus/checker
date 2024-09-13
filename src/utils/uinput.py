@@ -37,7 +37,7 @@ class ParseInput:
 
     def store_output(self: Self) -> bool:
         function_out: Output = self.call_func()
-        fname: str = f"output-act-{self.act_num}"
+        file_name: str = f"output-act-{self.act_num}.json"
         function_out["date"] = (
                 datetime
                     .now()
@@ -51,7 +51,7 @@ class ParseInput:
             # function into a file for viewing and processing
             # later on program so it is not stored in memory
             with open(
-                    "w", fname, encoding="utf-8"
+                    "w", file_name, encoding="utf-8"
                 ) as file_out:
                 file_out.write(function_out)
         except (
