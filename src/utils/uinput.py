@@ -38,21 +38,21 @@ class ParseInput:
     def store_output(self: Self) -> bool:
         function_out: Output = self.call_func()
         fname: str = f"output-act-{self.act_num}"
+        function_out["date"] = (
+                datetime
+                    .now()
+                    .strftime(
+                        "%d/%m/%Y %H:%M:%S"
+                    )
+            )
 
         try:
-            with open(
-                    "w", fname, encoding="utf-8"
-                ) as file_out:
-                function_out["date"] = (
-                        datetime
-                            .now()
-                            .strftime(
-                                "%d/%m/%Y %H:%M:%S"
-                            )
-                    )
             # write the details of activity and output of
             # function into a file for viewing and processing
             # later on program so it is not stored in memory
+            with open(
+                    "w", fname, encoding="utf-8"
+                ) as file_out:
                 file_out.write(function_out)
         except (
                 IOError,
