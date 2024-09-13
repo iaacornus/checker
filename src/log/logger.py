@@ -29,9 +29,8 @@ class Logger:
             try:
                 mkdir(BASE_PATH)
             except (PermissionError, OSError) as err:
-                self.CRIT(
-                    f"Cannot create directory: {err} ..."
-                )
+                self.CRIT(f"{err}")
+                raise SystemExit(err) from err
 
         file_log = logging.FileHandler(
                 filename=f"{BASE_PATH}/checker.log"
