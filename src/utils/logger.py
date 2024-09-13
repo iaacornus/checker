@@ -29,7 +29,7 @@ class Logger:
             try:
                 mkdir(BASE_PATH)
             except (PermissionError, OSError) as err:
-                self.critical(
+                self.CRIT(
                     f"Cannot create directory: {err} ..."
                 )
 
