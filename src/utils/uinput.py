@@ -26,9 +26,7 @@ class ParseInput:
                 func_out[f"return-{i}"] = output_
         except (AttributeError, ImportError) as err:
             self.log.CRIT(f"{err}")
-            raise SystemExit(
-                    f"{err} was raised."
-                ) from err
+            raise SystemExit(err) from err
 
         return {
                 "func_name": self.input_func.__name__,
